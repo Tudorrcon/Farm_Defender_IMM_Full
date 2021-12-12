@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerup = false;
 
     private float ZLimit = 8.5f;
-    private float XLimit = 15.7f;
+    private float XLimit = 15.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -55,13 +55,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && hasPowerup == false)
         {
             //Launch a projectile from the player.
-            Instantiate(projectile, transform.position, projectile.transform.rotation);
+            Instantiate(projectile, new Vector3(transform.position.x,1.85f,transform.position.z + 2), projectile.transform.rotation);
         }
 
         if (Input.GetKey(KeyCode.Space) && hasPowerup)
         {
             //Launch a line of projectiles from the player.
-            Instantiate(projectile, transform.position, projectile.transform.rotation);
+            Instantiate(projectile, new Vector3(transform.position.x, 1.85f, transform.position.z), projectile.transform.rotation);
         }
 
         powerupIndicator.transform.position = transform.position + new Vector3(0, 1, 0);

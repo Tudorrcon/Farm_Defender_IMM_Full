@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     public GameManager gameManager;
 
     private float XLimit = 8.5f;
-    private float spawnPosY = 1;
+    private float spawnPosY = 0.4f;
     private float spawnPosZ = 10.5f;
 
     private float XLimit2 = 8.0f;

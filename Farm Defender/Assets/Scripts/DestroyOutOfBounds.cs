@@ -5,7 +5,8 @@ using UnityEngine;
 public class DestroyOutOfBounds : MonoBehaviour
 {
     private float bottomLimit = -9.7f;
-    private float lateralLimit = 15.6f;
+    private float topLimit = 12;
+    private float lateralLimit = 15.3f;
     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class DestroyOutOfBounds : MonoBehaviour
             gameManager.UpdateLives();
 
         }
-        if (transform.position.x < -lateralLimit || transform.position.x > lateralLimit)
+        if (transform.position.x < -lateralLimit || transform.position.x > lateralLimit || transform.position.z > topLimit)
         {
             Destroy(gameObject);
         }

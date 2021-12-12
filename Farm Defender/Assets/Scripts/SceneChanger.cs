@@ -27,4 +27,10 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadSceneThree()
+    {
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1;
+    }
 }

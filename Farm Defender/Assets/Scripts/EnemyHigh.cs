@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHigh : MonoBehaviour
-{ 
+{
     public int health = 2;
     public int score = 10;
     public float speed; 

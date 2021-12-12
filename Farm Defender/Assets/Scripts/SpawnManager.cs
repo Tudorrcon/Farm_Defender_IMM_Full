@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -43,38 +44,88 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemyWave(int enemiesToSpawn)
     {
-        if (enemiesToSpawn<11) {
-            for (int i = 0; i < enemiesToSpawn; i++)
-            {
-                Instantiate(enemyLowPrefab, GenerateSpawnPosition(), enemyLowPrefab.transform.rotation);
-            }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ScenePrimitive"))
+        {
+            if (enemiesToSpawn < 11) {
+                for (int i = 0; i < enemiesToSpawn; i++)
+                {
+                    Instantiate(enemyLowPrefab, GenerateSpawnPosition(), enemyLowPrefab.transform.rotation);
+                }
 
-            if (enemiesToSpawn == 3)
-            {
-                Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
-            }
-            else if (enemiesToSpawn == 6)
-            {
-                Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
-            }
-            else if (enemiesToSpawn == 9)
-            {
-                Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
-            }
+                if (enemiesToSpawn == 3)
+                {
+                    Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
+                }
+                else if (enemiesToSpawn == 6)
+                {
+                    Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
+                }
+                else if (enemiesToSpawn == 9)
+                {
+                    Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
+                }
 
-            if (enemiesToSpawn > 7 && enemiesToSpawn < 10)
-            {
-                Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                if (enemiesToSpawn > 7 && enemiesToSpawn < 10)
+                {
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                }
+                else if (enemiesToSpawn > 9 && enemiesToSpawn < 11)
+                {
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                }
             }
-            else if (enemiesToSpawn > 9 && enemiesToSpawn < 11)
+            else
             {
-                Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
-                Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                if (gameManager.livesTotal > 0)
+                {
+                    gameManager.RoundWon();
+                }
             }
         }
-        else
+        else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ScenePrimitive 1"))
         {
-            gameManager.Winning();
+            if (enemiesToSpawn < 9)
+            {
+                Time.timeScale = 1;
+                for (int i = 0; i < enemiesToSpawn; i++)
+                {
+                    Instantiate(enemyLowPrefab, GenerateSpawnPosition(), enemyLowPrefab.transform.rotation);
+                }
+
+                if (enemiesToSpawn == 3)
+                {
+                    Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
+                }
+                else if (enemiesToSpawn == 6)
+                {
+                    Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
+                }
+                else if (enemiesToSpawn == 9)
+                {
+                    Instantiate(powerupPrefab, GeneratePowerUpSpawnPosition(), powerupPrefab.transform.rotation);
+                }
+
+                if (enemiesToSpawn > 3 && enemiesToSpawn < 5)
+                {
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                }
+                else if (enemiesToSpawn > 6 && enemiesToSpawn < 10)
+                {
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                    Instantiate(enemyHighPrefab, GenerateSpawnPosition(), enemyHighPrefab.transform.rotation);
+                }
+            }
+            else
+            {
+                if (gameManager.livesTotal > 0)
+                {
+                    gameManager.Winning();
+                    Time.timeScale = 0;
+                }
+            }
         }
     }
 

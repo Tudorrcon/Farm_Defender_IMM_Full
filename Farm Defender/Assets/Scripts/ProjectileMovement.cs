@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    private float speed = 20.0f;
+    public GameObject explosionParticle;
     private PlayerController playerController;
     private GameManager gameManager;
+
+    private float speed = 20.0f;
     public int pointValueLow;
     public int pointValueHigh;
 
@@ -38,10 +40,12 @@ public class ProjectileMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyLowTag"))
         {
+            GameObject e = (GameObject)Instantiate(explosionParticle, transform.position, transform.rotation);
             EnemyLow scriptEnemyLow = other.gameObject.GetComponent<EnemyLow>();
             Destroy(gameObject);
             Destroy(other.gameObject);
             gameManager.UpdateScore(scriptEnemyLow.score);
+            Destroy(e,1);
         }
         if (other.gameObject.CompareTag("EnemyHighTag"))
         {
@@ -50,9 +54,11 @@ public class ProjectileMovement : MonoBehaviour
             scriptEnemyHigh.health--;
             if (scriptEnemyHigh.health == 0)
             {
+                GameObject e = (GameObject)Instantiate(explosionParticle, transform.position, transform.rotation);
                 Destroy(gameObject);
                 Destroy(other.gameObject);
                 gameManager.UpdateScore(scriptEnemyHigh.score);
+                Destroy(e, 1);
             }
         }
     }

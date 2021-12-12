@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI winningText;
+    public TextMeshProUGUI levelWonText;
     public Button titleScreenButton;
+    public Button nextLevelButton;
     public bool isGameActive;
     public int scoreTotal = 0;
     public int livesTotal = 6;
@@ -51,6 +53,14 @@ public class GameManager : MonoBehaviour
         titleScreenButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
         isGameActive = false;
+    }
+
+    public void RoundWon()
+    {
+        nextLevelButton.gameObject.SetActive(true);
+        levelWonText.gameObject.SetActive(true);
+        isGameActive = false;
+        Time.timeScale = 0;
     }
 
     public void Winning()

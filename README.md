@@ -1,6 +1,6 @@
 # Farm_Defender_IMM_Project
 
-Team Contribution
+Team Contribution - ALPHA
 B00134106 Radu Neagu
 -Created Title Screen Scene with button functionality and scene changer.
 -Created layout textmeshpro for layout(score, lives).
@@ -10,3 +10,14 @@ B00137730 Tudor Rupanu
 -Created and implemented spawner, movement, enemy movement, projectile collision, game manager.
 -Created logic behind the game.
 -Helped implement functionality and logic for lives and score.
+
+Team Contribution - FULL
+B00137730 Tudor Rupanu
+-Worked on finding and replacing assets
+-Added music and audio clips
+-Created 3rd level
+
+B00134106 Radu Neagu
+-Worked on finding and replacing assets
+-Added music and audio clips
+-Created 3rd level
